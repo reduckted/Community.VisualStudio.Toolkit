@@ -19,8 +19,8 @@ namespace Community.VisualStudio.Toolkit
     /// </summary>
     public abstract class BaseOptionModel<T> where T : BaseOptionModel<T>, new()
     {
-        private static readonly AsyncLazy<T> _liveModel = new(CreateAsync, ThreadHelper.JoinableTaskFactory);
-        private static readonly AsyncLazy<ShellSettingsManager> _settingsManager = new(GetSettingsManagerAsync, ThreadHelper.JoinableTaskFactory);
+        private static readonly AsyncLazy<T> _liveModel = new(CreateAsync, ToolkitPackage.GetJoinableTaskFactory());
+        private static readonly AsyncLazy<ShellSettingsManager> _settingsManager = new(GetSettingsManagerAsync, ToolkitPackage.GetJoinableTaskFactory());
 
         /// <summary>
         /// Creates a new instance of the option model.
@@ -39,7 +39,7 @@ namespace Community.VisualStudio.Toolkit
             get
             {
                 ThreadHelper.ThrowIfNotOnUIThread();
-                return ThreadHelper.JoinableTaskFactory.Run(GetLiveInstanceAsync);
+                return ToolkitPackage.GetJoinableTaskFactory().Run(GetLiveInstanceAsync);
             }
         }
 
@@ -72,7 +72,7 @@ namespace Community.VisualStudio.Toolkit
         /// </summary>
         public virtual void Load()
         {
-            ThreadHelper.JoinableTaskFactory.Run(LoadAsync);
+            ToolkitPackage.GetJoinableTaskFactory().Run(LoadAsync);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Community.VisualStudio.Toolkit
         /// </summary>
         public virtual void Save()
         {
-            ThreadHelper.JoinableTaskFactory.Run(SaveAsync);
+            ToolkitPackage.GetJoinableTaskFactory().Run(SaveAsync);
         }
 
         /// <summary>

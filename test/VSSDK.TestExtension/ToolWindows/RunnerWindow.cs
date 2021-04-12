@@ -22,7 +22,7 @@ namespace TestExtension
             // Simulate long running background task
             await Task.Delay(2000);
 
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await Package.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             DTE2 dte = await VS.GetDTEAsync();
             return new RunnerWindowControl(dte);
         }

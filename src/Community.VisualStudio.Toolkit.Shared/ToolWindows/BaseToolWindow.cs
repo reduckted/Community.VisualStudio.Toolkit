@@ -86,7 +86,7 @@ namespace Community.VisualStudio.Toolkit
                 }
             }
 
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
             var windowFrame = (Microsoft.VisualStudio.Shell.Interop.IVsWindowFrame)window.Frame;
             Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
 

@@ -53,7 +53,7 @@ namespace EnvDTE
         /// <summary>Adds one or more files to the project.</summary>
         public static async Task AddFilesToProjectAsync(this Project project, params string[] files)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             if (project == null || project.IsKind(ProjectTypes.ASPNET_Core, ProjectTypes.DOTNET_Core, ProjectTypes.SSDT))
             {

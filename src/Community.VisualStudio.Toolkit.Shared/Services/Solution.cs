@@ -33,7 +33,7 @@ namespace Community.VisualStudio.Toolkit
         /// </summary>
         public async Task<IEnumerable<SelectedItem>> GetSelectedItemsAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             DTE2 dte = await VS.GetServiceAsync<SDTE, DTE2>();
             List<SelectedItem> list = new();
@@ -51,7 +51,7 @@ namespace Community.VisualStudio.Toolkit
         /// </summary>
         public async Task<ProjectItem?> GetActiveProjectItemAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             IVsMonitorSelection? monitorSelection = await VS.GetServiceAsync<SVsShellMonitorSelection, IVsMonitorSelection>();
             IntPtr hierarchyPointer = IntPtr.Zero;
@@ -88,7 +88,7 @@ namespace Community.VisualStudio.Toolkit
         /// </summary>
         public async Task<Project?> GetActiveProjectAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             DTE2? dte = await VS.GetServiceAsync<SDTE, DTE2>();
 
@@ -112,7 +112,7 @@ namespace Community.VisualStudio.Toolkit
         /// </summary>
         public async Task<IEnumerable<Project>> GetAllProjectsInSolutionAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
             IVsSolution solution = await GetSolutionAsync();
             return solution.GetAllProjects();
         }
@@ -122,7 +122,7 @@ namespace Community.VisualStudio.Toolkit
         /// </summary>
         public async Task<string?> GetSolutionDirectoryAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             IVsSolution solution = await GetSolutionAsync();
             return solution.GetDirectory();
@@ -133,7 +133,7 @@ namespace Community.VisualStudio.Toolkit
         /// </summary>
         public async Task<string?> GetSolutionFilePathAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             IVsSolution solution = await GetSolutionAsync();
             return solution.GetFilePath();

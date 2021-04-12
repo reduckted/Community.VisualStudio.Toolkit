@@ -69,7 +69,7 @@ namespace System
         {
             try
             {
-                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
                 if (await EnsurePaneAsync())
                 {
@@ -90,7 +90,7 @@ namespace System
                 {
                     if (_pane == null)
                     {
-                        await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                        await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
                         IVsOutputWindow output = await VS.Windows.GetOutputWindowAsync();
                         var guid = new Guid();

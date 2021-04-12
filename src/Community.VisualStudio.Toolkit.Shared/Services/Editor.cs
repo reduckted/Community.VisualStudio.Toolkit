@@ -18,7 +18,7 @@ namespace Community.VisualStudio.Toolkit
         /// <summary>Gets an instance of <see cref="TextDocument"/> from the currently active document.</summary>
         public async Task<TextDocument?> GetActiveTextDocumentAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
             EnvDTE80.DTE2 dte = await VS.GetDTEAsync();
             return dte.ActiveDocument.Object("TextDocument") as TextDocument;
         }
@@ -26,7 +26,7 @@ namespace Community.VisualStudio.Toolkit
         /// <summary>Gets the WPF text view from the currently active document.</summary>
         public async Task<IWpfTextView?> GetCurrentWpfTextViewAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             IComponentModel2 compService = await VS.GetServiceAsync<SComponentModel, IComponentModel2>();
             IVsEditorAdaptersFactoryService? editorAdapter = compService.GetService<IVsEditorAdaptersFactoryService>();

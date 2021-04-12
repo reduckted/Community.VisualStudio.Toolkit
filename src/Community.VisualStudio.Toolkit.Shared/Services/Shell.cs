@@ -48,7 +48,7 @@ namespace Community.VisualStudio.Toolkit
         /// </summary>
         public async Task OpenDocumentViaProjectAsync(string fileName)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             IVsUIShellOpenDocument openDoc = await VS.GetServiceAsync<SVsUIShellOpenDocument, IVsUIShellOpenDocument>();
 

@@ -17,7 +17,7 @@ namespace Community.VisualStudio.Toolkit
         /// <summary>Gets the current text from the status bar.</summary>
         public async Task<string?> GetStatusbarTextAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
             
             try
             {
@@ -36,7 +36,7 @@ namespace Community.VisualStudio.Toolkit
         /// <summary>Sets the text in the status bar.</summary>
         public async Task SetStatusbarTextAsync(string text)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             try
             {
@@ -55,7 +55,7 @@ namespace Community.VisualStudio.Toolkit
         /// <summary>Clears all text from the status bar.</summary>
         public async Task ClearStatusbarAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             try
             {
@@ -74,7 +74,7 @@ namespace Community.VisualStudio.Toolkit
         /// <summary>Starts the animation on the status bar.</summary>
         public async Task StartStatusbarAnimationAsync(StatusAnimation animation)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             try
             {
@@ -93,7 +93,7 @@ namespace Community.VisualStudio.Toolkit
         /// <summary>Ends the animation on the status bar.</summary>
         public async Task EndStatusbarAnimationAsync(StatusAnimation animation)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             try
             {

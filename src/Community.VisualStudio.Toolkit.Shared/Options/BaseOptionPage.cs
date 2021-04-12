@@ -14,7 +14,7 @@ namespace Community.VisualStudio.Toolkit
         /// </summary>
         public BaseOptionPage()
         {
-            _model = ThreadHelper.JoinableTaskFactory.Run(BaseOptionModel<T>.CreateAsync);
+            _model = ToolkitPackage.GetJoinableTaskFactory().Run(BaseOptionModel<T>.CreateAsync);
         }
 
         /// <summary>The model object to load and store.</summary>

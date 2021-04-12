@@ -26,7 +26,7 @@ namespace Microsoft.VisualStudio.Imaging.Interop
         /// </example>
         public static async Task<BitmapSource?> ToBitmapSourceAsync(this ImageMoniker moniker, int size)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             IVsUIObject? result = await ToUiObjectAsync(moniker, size);
             ErrorHandler.ThrowOnFailure(result.get_Data(out var data));
@@ -39,7 +39,7 @@ namespace Microsoft.VisualStudio.Imaging.Interop
         /// </summary>
         public static async Task<IVsUIObject> ToUiObjectAsync(this ImageMoniker moniker, int size)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await ToolkitPackage.GetJoinableTaskFactory().SwitchToMainThreadAsync();
 
             IVsImageService2 imageService = await VS.GetServiceAsync<SVsImageService, IVsImageService2>();
             Color backColor = VSColorTheme.GetThemedColor(EnvironmentColors.ToolWindowBackgroundColorKey);
