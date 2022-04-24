@@ -19,6 +19,7 @@ namespace VSSDK.TestExtension
     [ProvideToolWindow(typeof(ThemeWindow.Pane))]
     [ProvideFileIcon(".abc", "KnownMonikers.Reference")]
     [ProvideToolWindow(typeof(MultiInstanceWindow.Pane))]
+    [ProvideToolWindow(typeof(TableWindow.Pane))]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideService(typeof(RunnerWindowMessenger), IsAsyncQueryable = true)]
